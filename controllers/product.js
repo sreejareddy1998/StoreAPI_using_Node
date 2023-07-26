@@ -1,8 +1,6 @@
 const Product=require('../models/products');
 const getAllProductsStatic= async (req,res)=>{
-    const search='a'
-    const products=await Product.find({name:
-        { $regex:search, $options: 'i'}})
+    const products=await Product.find({}).sort('-name price')
     //option i means case insensitive
     // throw new Error('Testing async errors')
     res.status(200).json({products, no_of_hits: products.length})
